@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instagram Media Downloader</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+      <div class="container">
+        <img src="img/menu.png" width="30px" height="30px" class="__muted__" alt="">
+      </div>
+    </header>
+
+
+    <div class="container">
+      <div class="__inputHolder__ clearfix">
+        <input type="text" name="" value="" id="link" placeholder="Paste instagram link here">
+        <button type="button" name="button" onclick="getMedia()">GO</button>
+      </div>
+    </div>
+
+    <div class="container __mediaHolder__">
+      <img src="ss" alt="Image" id="image">
+      <hr>
+      <button type="button" name="button">Download</button>
+      <br><br><span class="__muted__">Or right click and save the image</span>
+    </div>
+
+    <!-- 1109430153.55982b1.7a524099460340b7b90b282ee338f0cb -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+      function getMedia(){
+        let link = $("#link").val();
+        $.ajax({
+          url : 'https://api.instagram.com/oembed/?url=' + link,
+          type : 'get',
+          dataType: 'json',
+          crossDomain: true,
+          beforeSend : function(){
+            console.log('fetching data');
+          },
+          success : function(response){
+            console.log(response);
+            $("#image").attr('src',response.thumbnail_url);
+          },
+          error : function(error){
+            console.log(error);
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
