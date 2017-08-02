@@ -4,14 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Instagram Media Downloader</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 
     <header>
       <div class="container">
-        <img src="img/menu.png" width="30px" height="30px" class="__muted__" alt="">
+
+        <div class="col-xs-4"><!-- <img src="img/menu.png" width="30px" height="30px" class="__muted__" alt="">--></div>
+        <div class="col-xs-4" style="text-align: center"><img style="width:30px;" src="img/logo-128.png" alt=""></div>
+        <div class="col-xs-4"></div>
       </div>
     </header>
 
@@ -26,7 +30,7 @@
 
     <div class="container __mediaHolder__">
       <div class="" style="height:200px;">
-        <img src="ss" alt="Image" id="image">
+        <img src="" alt="Image" id="image">
       </div>
 
       <hr>
@@ -42,35 +46,14 @@
     </footer>
 
     <!-- 1109430153.55982b1.7a524099460340b7b90b282ee338f0cb -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" async></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript">
-      function getMedia(){
-        let link = $("#link").val();
-        $.ajax({
-          url : 'https://api.instagram.com/oembed/?url=' + link,
-          type : 'get',
-          dataType: 'jsonp',
-          crossDomain: true,
-          beforeSend : function(){
-            console.log('fetching data');
-          },
-          success : function(response){
-            console.log(response);
-            $("#image").attr('src',response.thumbnail_url);
-            if(response.thumbnail_url != undefined){
-              $("#downloadBtn").removeClass("disabled");
-            } else {
-              $("#downloadBtn").addClass("disabled");
-            }
-          },
-          error : function(error){
-            console.log(error);
-          }
-        })
-      }
-      //function to clear the textbox
-      function clearTextBox(){
-        $("#link").val("");
+      //Working with service workers
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                 .register('./service-worker.js')
+                 .then(function() { console.log('Service Worker Registered'); });
       }
     </script>
   </body>
