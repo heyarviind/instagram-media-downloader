@@ -19,23 +19,26 @@
     <div class="container">
       <div class="__inputHolder__ clearfix">
         <input type="text" name="" value="" id="link" placeholder="Paste instagram link here">
-        <button type="button" id="go" name="button" onclick="getMedia()">GO</button>
-        <button type="button" id="clear" name="button" onclick="clearTextBox()">X</button>
+        <button type="button" id="goBtn" name="button" onclick="getMedia()">GO</button>
+        <button type="button" id="clearBtn" name="button" onclick="clearTextBox()">X</button>
       </div>
     </div>
 
     <div class="container __mediaHolder__">
-      <div style="height:200px;">
+      <div class="" style="height:200px;">
         <img src="ss" alt="Image" id="image">
       </div>
+
       <hr>
-      <button id="downloadBtn" class="disable" type="button" name="button">Download</button>
+      <button type="button" id="downloadBtn" name="button" class="disabled">Download</button>
       <br><br><span class="__muted__">Or right click and save the image</span>
     </div>
 
     <footer>
       <a href="https://github.com/heyarviind/instagram-media-downloader" target="_blank">Github</a>
-      <div>Made with ❤️ in India</div>
+      <div class="">
+        Made with ❤️ in India
+      </div>
     </footer>
 
     <!-- 1109430153.55982b1.7a524099460340b7b90b282ee338f0cb -->
@@ -55,17 +58,15 @@
             console.log(response);
             $("#image").attr('src',response.thumbnail_url);
             if(response.thumbnail_url != undefined){
-              $("#downloadBtn").removeClass("disable");
+              $("#downloadBtn").removeClass("disabled");
             } else {
-              $("#downloadBtn").addClass("disable");
+              $("#downloadBtn").addClass("disabled");
             }
           },
           error : function(error){
-            if(error.status_text == 'error'){
-              $("#downloadBtn").addClass("disable");
-            }
+            console.log(error);
           }
-        });
+        })
       }
       //function to clear the textbox
       function clearTextBox(){

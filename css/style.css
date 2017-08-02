@@ -22,7 +22,7 @@ header{
     width: 80%;
   }
 
-  .__inputHolder__ #go{
+  .__inputHolder__ #goBtn{
     float: right;
     border: none;
     outline: none;
@@ -30,14 +30,15 @@ header{
     color: #448aff;
     border-radius: 3px;
   }
-  .__inputHolder__ #clear{
+  .__inputHolder__ #clearBtn{
     float: right;
     border: none;
     outline: none;
     background-color: #ffffff;
-    color: #b5b5b5;
+    color: #b9b9b9;
     border-radius: 3px;
   }
+
     .__inputHolder__ button:active{
       background-color: #ededed;
     }
@@ -66,18 +67,16 @@ header{
     text-transform: uppercase;
     white-space: nowrap;
   }
-  .__mediaHolder__ button.disable{
+  .__mediaHolder__ button.disabled{
     background-color: #cccccc;
-    cursor: default;
   }
 footer{
   background-color: #fff;
-  width: 100%;
+  padding: 10px;
+  text-align: center;
   position: fixed;
+  width: 100%;
   bottom: 0;
   border-top: solid 1px #ededed;
-  text-align: center;
   font-size: 12px;
-  padding: 8px;
-  /*color: rgba(0,0,0,0.5);*/
 }
